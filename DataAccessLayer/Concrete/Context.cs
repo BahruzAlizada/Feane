@@ -17,6 +17,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Category> Categories { get;set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Service> Services { get; set; }
-    
+        public DbSet<Bio> Bios { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
     }
 }

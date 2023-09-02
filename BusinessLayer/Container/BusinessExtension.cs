@@ -19,6 +19,12 @@ namespace BusinessLayer.Container
 
 			services.AddScoped<ITestimonialService,TestimonialManager>();
 			services.AddScoped<ITestimonialDal, EFTestimonialDal>();
+
+			services.AddScoped<IBioService, BioManager>();
+			services.AddScoped<IBioDal, EFBioDal>();
+
+			services.AddScoped<ISocialMediaService,SocialMediaManager>();
+			services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
 		}
 	}
 }

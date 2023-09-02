@@ -1,0 +1,62 @@
+﻿@model FooterVM
+<div class="row">
+    <div class="col-md-4 footer-col">
+        <div class="footer_contact">
+            <h4>
+                Contact Us
+            </h4>
+            <div class="contact_link_box">
+                <a href="#">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span>@Model.Bio.FooterLocation</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>Call @Model.Bio.FooterPhone</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <span>@Model.Bio.FooterEmail</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 footer-col">
+        <div class="footer_detail">
+            <a asp-controller="Home" asp-action="Index" class="footer-logo">@Model.Bio.HeaderLogoName</a>
+           <p>@Model.Bio.FooterDescription</p>
+            <div class="footer_social">
+                <a href="@Model.SocialMedia.FacebookLink">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="@Model.SocialMedia.TvitterLink">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="@Model.SocialMedia.LinkedinLink">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="@Model.SocialMedia.InstagramLink">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 footer-col">
+        <h4>
+            Opening Hours
+        </h4>
+        <p>
+            Everyday
+        </p>
+        <p>
+            @Model.Bio.Started.ToShortTimeString() - @Model.Bio.Ended.ToShortTimeString()
+        </p>
+    </div>
+</div>
+
+<div class="footer-info">
+    <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="https://html.design/">Free Html Templates</a><br><br>
+    </p>
+</div>

@@ -1,0 +1,61 @@
+﻿@model BioModel
+
+<div class="row">
+    <div class="col-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Bio</h5>
+            </div>
+            <div class="card-body">
+                <form method="post">
+
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="HeaderLogoName" class="form-label">Logo Name</label>
+                        <input asp-for="HeaderLogoName" class="form-control" />
+                        <span class="text-danger" asp-validation-for="HeaderLogoName"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="FooterLocation" class="form-label">Location</label>
+                        <input asp-for="FooterLocation" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FooterLocation"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="FooterEmail" class="form-label">Email</label>
+                        <input asp-for="FooterEmail" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FooterEmail"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="FooterPhone" class="form-label">Phone</label>
+                        <input asp-for="FooterPhone" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FooterPhone"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="FooterDescription" class="form-label">Description</label>
+                        <textarea asp-for="FooterDescription" class="form-control"></textarea>
+                        <span class="text-danger" asp-validation-for="FooterDescription"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Started" class="form-label">Started</label>
+                        <input asp-for="Started" type="time" class="form-control" />
+                        <span class="text-danger" asp-validation-for="FooterPhone"></span>
+                    </div>
+
+                    <div class="mb-3 form-group">
+                        <label asp-for="Ended" class="form-label">Ended</label>
+                        <input asp-for="Ended" type="time" class="form-control" />
+                        <span class="text-danger" asp-validation-for="Ended"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a asp-action="Index" class="btn btn-secondary">Go Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
