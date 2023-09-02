@@ -17,7 +17,6 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Image</th>
                         <th>Name</th>
                         <th>Status</th>
                         <th style="text-align:right">Actions</th>
@@ -27,9 +26,6 @@
                     @foreach(Slider item in Model)
                     {
                       <tr>
-                         <td>
-                             <img style="height:85px;width:180px; object-fit:cover;" src="~/images/slider/@item.Image">
-                         </td>
                         <td>@item.Title</td>
                         <td>
                                 @if (item.IsDeactive)

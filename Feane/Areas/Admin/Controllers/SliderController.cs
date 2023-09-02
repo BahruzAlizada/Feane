@@ -10,11 +10,9 @@ namespace Feane.Areas.Admin.Controllers
 	public class SliderController : Controller
 	{
 		private readonly ISliderService sliderService;
-		private readonly IWebHostEnvironment env;
-        public SliderController(ISliderService sliderService,IWebHostEnvironment env)
+        public SliderController(ISliderService sliderService)
         {
             this.sliderService = sliderService;
-			this.env = env;
         }
 
 		#region Index
@@ -34,7 +32,7 @@ namespace Feane.Areas.Admin.Controllers
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 
-		public async Task<IActionResult> Create(SliderModel model)
+		public IActionResult Create(SliderModel model)
 		{
 			#region Existed
 			bool result = sliderService.GetSliders().Any(x => x.Title == model.Title);
@@ -45,34 +43,16 @@ namespace Feane.Areas.Admin.Controllers
 			}
             #endregion
 
-       
+
             Slider slider = new Slider
-			{
-				Id = model.Id,
+            {
+                Id = model.Id,
+                Image = "1",
 				Title = model.Title,
 				Description = model.Description,
 				IsDeactive = false
 			};
 
-            #region Photo
-            if (model.Photo == null)
-            {
-                ModelState.AddModelError("Photo", "Photo can not be null");
-                return View();
-            }
-            if (!model.Photo.IsImage())
-            {
-                ModelState.AddModelError("Photo", "Just Image type");
-                return View();
-            }
-            if (model.Photo.IsOlder256Kb())
-            {
-                ModelState.AddModelError("Photo", "Max 256Kb");
-                return View();
-            }
-            string folder = Path.Combine(env.WebRootPath, "images", "slider");
-            slider.Image = await model.Photo.SaveFileAsync(folder);
-            #endregion
 
             sliderService.Add(slider);
 			return RedirectToAction("Index");
@@ -99,7 +79,7 @@ namespace Feane.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int id,SliderModel model)
+        public IActionResult Update(int id,SliderModel model)
         {
             Slider dbslider = sliderService.GetSlider(id);
             if (dbslider == null)
@@ -114,40 +94,21 @@ namespace Feane.Areas.Admin.Controllers
             }
             #endregion
 
-            Slider slider = new Slider();
-
-            #region Image
-            if (model.Photo != null)
-            {
-                if (!model.Photo.IsImage())
-                {
-                    ModelState.AddModelError("Photo", "Just Image Type");
-                    return View();
-                }
-                if (model.Photo.IsOlder256Kb())
-                {
-                    ModelState.AddModelError("Photo", "Max 256Kb");
-                    return View();
-                }
-                string folder = Path.Combine(env.WebRootPath, "images", "slider");
-                slider.Image = await model.Photo.SaveFileAsync(folder);
-                string path = Path.Combine(env.WebRootPath, folder, dbslider.Image);
-                if (System.IO.File.Exists(path))
-                    System.IO.File.Delete(path);
-                dbslider.Image = slider.Image;
-            }
-            #endregion
-
+   
             dbslider.Id = model.Id;
             dbslider.Title=model.Title;
             dbslider.Description = model.Description;
             
 
-            model.Id = slider.Id;
-            model.Title = slider.Title;
-            model.Description = slider.Description;
-            slider.IsDeactive = false;
-
+            Slider slider = new Slider
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Description,
+                IsDeactive = false,
+                Image="1"
+            };
+           
             sliderService.Update(slider);
             return RedirectToAction("Index");
         }

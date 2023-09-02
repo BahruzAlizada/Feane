@@ -1,4 +1,6 @@
-﻿using Feane.Models;
+﻿using BusinessLayer.Abstract;
+using EntityLayer.Concrete;
+using Feane.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +8,17 @@ namespace Feane.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ISliderService sliderService;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(ISliderService sliderService)
 		{
-			_logger = logger;
+			this.sliderService = sliderService;
 		}
 
 		public IActionResult Index()
 		{
-			return View();
+            List<Slider> sliders = sliderService.GetSliders().Where(x => !x.IsDeactive).OrderByDescending(x => x.Id).Take(3).ToList();
+            return View(sliders);
 		}
 
 		public IActionResult Privacy()
