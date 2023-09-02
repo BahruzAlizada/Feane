@@ -1,7 +1,10 @@
+using BusinessLayer.Container;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.ContainerDependencies();
 
 var app = builder.Build();
 

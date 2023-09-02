@@ -1,0 +1,18 @@
+﻿@model About
+
+<div class="row">
+    <div class="col-md-6 ">
+        <div class="img-box">
+            <img src="~/images/about/@Model.Image" alt="">
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="detail-box">
+            <div class="heading_container">
+                <h2>@Model.Title</h2>
+            </div>
+           <p>@Html.Raw(Model.Description)</p>
+           <a href="#">Order Now</a>
+        </div>
+    </div>
+</div>
