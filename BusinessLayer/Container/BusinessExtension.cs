@@ -25,6 +25,9 @@ namespace BusinessLayer.Container
 
 			services.AddScoped<ISocialMediaService,SocialMediaManager>();
 			services.AddScoped<ISocialMediaDal, EFSocialMediaDal>();
+
+			services.AddScoped<IBookingService, BookingManager>();
+			services.AddScoped<IBookingDal, EFBookingDal>();
 		}
 	}
 }

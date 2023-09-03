@@ -19,5 +19,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Service> Services { get; set; }
         public DbSet<Bio> Bios { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

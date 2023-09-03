@@ -1,0 +1,71 @@
+﻿@model BookingModel
+@{
+    Layout = "_SubLayout";
+}
+ <!-- Book section -->
+<section class="book_section layout_padding">
+    <div class="container">
+
+        <div class="heading_container">
+            <h2>Book A Table</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form_container">
+                    <form method="post">
+                        <div class="form-group">
+                            <input asp-for="FullName" class="form-control" placeholder="Your Name" />
+                            <span class="text-danger" asp-validation-for="FullName"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number" />
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input asp-for="Email" class="form-control" placeholder="Your Email" />
+                            <span class="text-danger" asp-validation-for="Email"></span>
+                        </div>
+
+                        <div>
+                            <select class="form-control nice-select wide">
+                                <option value="" disabled selected>
+                                    How many persons?
+                                </option>
+                                <option value="true" asp-for="IsTwoPerson">
+                                   Two Person
+                                </option>
+                                <option value="false" asp-for="IsTwoPerson">
+                                    Two More Persons
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="row g-2">
+
+                            <div class="col-6 form-group">
+                                <input asp-for="Day" type="date" class="form-control" placeholder="Date" />
+                                <span class="text-danger" asp-validation-for="Day"></span>
+                            </div>
+
+                            <div class="col-6 form-group">
+                                <input asp-for="Time" type="time" class="form-control" placeholder="Time" />
+                                <span class="text-danger" asp-validation-for="Time"></span>
+                            </div>
+
+                        </div>
+                       
+                        <div class="btn_box">
+                            <button>
+                                Book Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Booking section -->
