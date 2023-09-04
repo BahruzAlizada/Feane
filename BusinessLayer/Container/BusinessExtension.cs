@@ -28,6 +28,12 @@ namespace BusinessLayer.Container
 
 			services.AddScoped<IBookingService, BookingManager>();
 			services.AddScoped<IBookingDal, EFBookingDal>();
+
+			services.AddScoped<IService, ServiceManager>();
+			services.AddScoped<IServiceDal,EFServiceDal>();
+
+			services.AddScoped<ICategoryService, CategoryManager>();
+			services.AddScoped<ICategoryDal, EFCategoryDal>();
 		}
 	}
 }

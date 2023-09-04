@@ -1,0 +1,17 @@
+﻿@model List<Service>
+
+@foreach (Service service in Model)
+{
+    <div class="col-md-6  ">
+        <div class="box ">
+            <div class="img-box">
+                <img src="~/images/service/@service.Image" alt="">
+            </div>
+            <div class="detail-box">
+                <h5>@service.Name</h5>
+                <h6><span>@service.Discount%</span> Off</h6>
+                <a asp-controller="Booking" asp-action="Index">Booking Now</a>
+            </div>
+        </div>
+    </div>
+}
