@@ -1,0 +1,75 @@
+﻿@{
+	Layout = "_SubLayout";
+}
+
+@model MenuVM
+
+@section Css{
+	<style>
+
+		.filters_menu li a {
+			color: black;
+		}
+
+		.filters_menu li a:hover {
+			color: white;
+		}
+	</style>
+}
+
+<!-- Food section -->
+<section class="food_section layout_padding">
+	<div class="container">
+		<div class="heading_container heading_center">
+			<h2>Our Menu</h2>
+		</div>
+
+		<ul class="filters_menu">
+			@foreach (Category category in Model.Categories)
+			{
+				<li><a id="cat" href="#" data-category-id="@category.Id">@category.CategoryName</a></li>
+			}
+		</ul>
+
+		<div class="filters-content">
+			<div class="row grid">
+				@foreach (Menu menu in Model.Menus)
+				{
+					<div class="col-sm-6 col-lg-4 all" data-category-id="@menu.CategoryId">
+						<div class="box">
+							<div>
+								<div class="img-box">
+									<img src="images//menu/@menu.Image">
+								</div>
+								<div class="detail-box">
+									<h5>@menu.Name</h5>
+									<p>@menu.Description</p>
+									<div class="options">
+										<h6 style="text-align:center;">$@menu.Price</h6>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- Food section -->
+@section Scripts{
+
+	<script>
+		$(document).ready(function () {
+			$('.filters_menu a').click(function (e) {
+				e.preventDefault();
+				var categoryId = $(this).data('category-id');
+
+				$('.all').hide(); // Tüm menüleri gizle
+				$('.all[data-category-id="' + categoryId + '"]').show(); // Seçilen kategoriye ait menüleri göster
+			});
+		});
+	</script>
+}
+

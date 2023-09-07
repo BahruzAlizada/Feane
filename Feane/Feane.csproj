@@ -32,6 +32,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="wwwroot\images\about\" />
+    <Folder Include="wwwroot\images\menu\" />
     <Folder Include="wwwroot\images\service\" />
     <Folder Include="wwwroot\images\slider\" />
   </ItemGroup>
